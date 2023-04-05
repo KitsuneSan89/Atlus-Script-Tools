@@ -22,7 +22,7 @@ namespace AtlusScriptCompiler
     internal class Program
     {
         public static AssemblyName AssemblyName = Assembly.GetExecutingAssembly().GetName();
-        public static Version Version = AssemblyName.Version;
+        public static string Version = Assembly.GetEntryAssembly()?.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
         public static Logger Logger = new Logger(nameof(AtlusScriptCompiler));
         public static LogListener Listener = new FileAndConsoleLogListener( true, LogLevel.Info | LogLevel.Warning | LogLevel.Error | LogLevel.Fatal );
         public static string InputFilePath;
@@ -47,7 +47,7 @@ namespace AtlusScriptCompiler
 
         private static void DisplayUsage()
         {
-            Console.WriteLine( $"AtlusScriptCompiler {Version.Major}.{Version.Minor}-{ThisAssembly.Git.Commit} by TGE (2018)" );
+            Console.WriteLine( $"AtlusScriptCompiler {Version} by TGE (2018)" );
             Console.WriteLine();
             Console.WriteLine( "Note: If you encounter any issues, please report it & include the AtlusScriptCompiler.log file. Thank you." );
             Console.WriteLine();

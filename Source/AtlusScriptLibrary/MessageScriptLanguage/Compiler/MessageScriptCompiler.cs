@@ -824,7 +824,8 @@ namespace AtlusScriptLibrary.MessageScriptLanguage.Compiler
                 mCompiler = compiler;
             }
 
-            public void SyntaxError( IRecognizer recognizer, Antlr4.Runtime.IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e )
+            // TODO: should we be using TextWriter for output here?
+            public void SyntaxError(TextWriter w, IRecognizer recognizer, Antlr4.Runtime.IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e )
             {
                 mCompiler.mLogger.Error( $"Syntax error: {msg} ({offendingSymbol.Line}:{offendingSymbol.Column})" );
             }
