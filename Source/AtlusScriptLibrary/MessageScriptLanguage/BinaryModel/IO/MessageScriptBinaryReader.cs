@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using AtlusScriptLibrary.Common.IO;
+using AtlusScriptLibrary.Common.Text.Encodings;
 
 namespace AtlusScriptLibrary.MessageScriptLanguage.BinaryModel.IO
 {
@@ -18,7 +19,7 @@ namespace AtlusScriptLibrary.MessageScriptLanguage.BinaryModel.IO
         public MessageScriptBinaryReader( Stream stream, BinaryFormatVersion version, bool leaveOpen = false )
         {
             mPositionBase = stream.Position;
-            mReader = new EndianBinaryReader( stream, Encoding.GetEncoding( 932 ), leaveOpen, version.HasFlag( BinaryFormatVersion.BigEndian ) ? Endianness.BigEndian : Endianness.LittleEndian );
+            mReader = new EndianBinaryReader( stream, ShiftJISEncoding.Instance, leaveOpen, version.HasFlag( BinaryFormatVersion.BigEndian ) ? Endianness.BigEndian : Endianness.LittleEndian );
             mVersion = version;
         }
 

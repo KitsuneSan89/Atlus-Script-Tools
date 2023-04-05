@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using AtlusScriptLibrary.Common.IO;
+using AtlusScriptLibrary.Common.Text.Encodings;
 using AtlusScriptLibrary.MessageScriptLanguage.BinaryModel;
 
 namespace AtlusScriptLibrary.FlowScriptLanguage.BinaryModel.IO
@@ -17,7 +18,7 @@ namespace AtlusScriptLibrary.FlowScriptLanguage.BinaryModel.IO
         public FlowScriptBinaryWriter( Stream stream, BinaryFormatVersion version, bool leaveOpen = false )
         {
             mPositionBase = stream.Position;
-            mWriter = new EndianBinaryWriter( stream, Encoding.GetEncoding( 932 ), leaveOpen, version.HasFlag( BinaryFormatVersion.BigEndian ) ? Endianness.BigEndian : Endianness.LittleEndian );
+            mWriter = new EndianBinaryWriter( stream, ShiftJISEncoding.Instance, leaveOpen, version.HasFlag( BinaryFormatVersion.BigEndian ) ? Endianness.BigEndian : Endianness.LittleEndian );
             mVersion = version;
         }
 
