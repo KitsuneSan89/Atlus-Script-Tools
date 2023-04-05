@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using AtlusScriptLibrary.Common.IO;
+using AtlusScriptLibrary.Common.Text.Encodings;
 
 namespace AtlusScriptLibrary.Common
 {
@@ -178,13 +179,13 @@ namespace AtlusScriptLibrary.Common
         //
         // Properties
         //
-        protected long StreamStartPosition { get; private set; }
+        private long StreamStartPosition { get;  set; }
 
-        protected Stream Stream { get; private set; }
+        private Stream Stream { get; set; }
 
-        protected bool OwnsStream { get; private set; }
+        private bool OwnsStream { get; set; }
 
-        protected Dictionary<string, ArchiveEntry> EntryMap { get; private set; }
+        private Dictionary<string, ArchiveEntry> EntryMap { get; set; }
 
         public ArchiveVersion Version { get; set; }
         
