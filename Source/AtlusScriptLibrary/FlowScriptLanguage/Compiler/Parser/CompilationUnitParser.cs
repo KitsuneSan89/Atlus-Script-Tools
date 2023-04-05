@@ -2082,7 +2082,8 @@ namespace AtlusScriptLibrary.FlowScriptLanguage.Compiler.Parser
                 mLogger = logger;
             }
 
-            public void SyntaxError( IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e )
+            // TODO: Should this use TextWriter for output?
+            public void SyntaxError(TextWriter w, IRecognizer recognizer, IToken offendingSymbol, int line, int charPositionInLine, string msg, RecognitionException e )
             {
                 mLogger.Error( $"Syntax error: {msg} ({offendingSymbol.Line}:{offendingSymbol.Column})" );
             }
