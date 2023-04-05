@@ -41,7 +41,11 @@ void test()
             RunTest(source, new[]
             {
                 Instruction.PROC(0),
-                Instruction.PUSHF(-420.69f),
+                // Original scripts never use negative literals
+                // so if our literal is negative, we make it positive
+                // and later negative it using the negation operator
+                Instruction.PUSHF(420.69f),
+                Instruction.MINUS(),
                 Instruction.POPLFX(0),
                 Instruction.END(),
             });
@@ -59,7 +63,11 @@ void test()
             RunTest(source, new[]
             {
                 Instruction.PROC(0),
-                Instruction.PUSHF(-420.69f),
+                // Original scripts never use negative literals
+                // so if our literal is negative, we make it positive
+                // and later negative it using the negation operator
+                Instruction.PUSHF(420.69f),
+                Instruction.MINUS(),
                 Instruction.POPLFX(0),
                 Instruction.END(),
             });
