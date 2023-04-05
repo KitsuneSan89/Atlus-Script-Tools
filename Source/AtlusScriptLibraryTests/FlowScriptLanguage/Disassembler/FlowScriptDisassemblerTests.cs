@@ -19,26 +19,26 @@ namespace AtlusScriptLibrary.FlowScriptLanguage.Disassembler.Tests
         [TestMethod]
         public void DisassembleToFileTest_V1()
         {
-            DisassembleToFileTestBase( "TestResources\\Version1.bf" );
+            DisassembleToFileTestBase( Path.Combine("TestResources","Version1.bf") );
         }
 
         [TestMethod]
         public void DisassembleToFileTest_V2()
         {
-            DisassembleToFileTestBase( "TestResources\\Version2.bf" );
+            DisassembleToFileTestBase( Path.Combine("TestResources","Version2.bf") );
         }
 
         [TestMethod]
         public void DisassembleToFileTest_V3_BE()
         {
-            DisassembleToFileTestBase( "TestResources\\Version3BigEndian.bf" );
+            DisassembleToFileTestBase( Path.Combine("TestResources","Version3BigEndian.bf") );
         }
 
         [TestMethod]
         [Ignore]
         public void DisassembleToFileTest_Batch()
         {
-            foreach ( var path in Directory.EnumerateFiles( "TestResources\\Batch\\", "*.bf" ) )
+            foreach ( var path in Directory.EnumerateFiles( Path.Combine("TestResources","Batch"), "*.bf" ) )
             {
                 DisassembleToFileTestBase( path );
             }
@@ -47,7 +47,7 @@ namespace AtlusScriptLibrary.FlowScriptLanguage.Disassembler.Tests
         [TestMethod]
         public void DisassembleTest()
         {
-            var script = FlowScriptBinary.FromFile( "TestResources\\Version1.bf" );
+            var script = FlowScriptBinary.FromFile( Path.Combine("TestResources","Version1.bf") );
             using ( var disassembler = new FlowScriptBinaryDisassembler( new StringWriter() ) )
                 disassembler.Disassemble( script );
         }

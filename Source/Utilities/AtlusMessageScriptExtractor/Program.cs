@@ -214,7 +214,7 @@ namespace AtlusMessageScriptExtractor
 
         static void ExtractMessageScripts()
         {
-            using ( Writer = new IndentedTextWriter( FileUtils.CreateText( $".\\MessageScriptDump.txt" ) ) )
+            using ( Writer = new IndentedTextWriter( FileUtils.CreateText( Path.Combine(".","MessageScriptDump.txt" )) ) )
             {
                 if ( UseDecompiler )
                 {
